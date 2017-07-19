@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 
 	<name>CommunityVessellsMVC</name>
-	<description>Simple Rest Api for Community Vessells App</description>
+	<description>Community Vessells App</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
