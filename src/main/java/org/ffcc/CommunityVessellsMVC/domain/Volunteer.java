@@ -1,23 +1,20 @@
 package org.ffcc.CommunityVessellsMVC.domain;
 
-import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
-import javax.validation.Constraint;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
-
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Volunteer {
@@ -34,13 +31,14 @@ public class Volunteer {
 	
 	
 	@Length(min = 8, message = "*Your password must have at least 8 characters")
-	@NotEmpty(message = "*Please provide your password")
-	
+	@NotEmpty(message = "*Please provide your password")	
 	private String password;
 	
 	private String avatarPath;
 	private String firstName;
 	private String lastName;
+
+	
 	public String getEmail() {
 		return email;
 	}
@@ -66,6 +64,12 @@ public class Volunteer {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public String getAvatarPath() {
+		return avatarPath;
+	}
+	public void setAvatarPath(String avatarPath) {
+		this.avatarPath = avatarPath;
 	}
 	
 	//@OneToMany(mappedBy="volunteer", targetEntity=Promise.class)

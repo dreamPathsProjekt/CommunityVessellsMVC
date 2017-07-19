@@ -1,20 +1,22 @@
 package org.ffcc.CommunityVessellsMVC.domain;
 
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
-
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Organization {
@@ -32,8 +34,7 @@ public class Organization {
 	
 	
 	@Length(min = 8, message = "*Your password must have at least 8 characters")
-	@NotEmpty(message = "*Please provide your password")
-	@JsonIgnore	
+	@NotEmpty(message = "*Please provide your password")	
 	private String password;
 	
 	private String avatarPath;
@@ -43,7 +44,7 @@ public class Organization {
 	@OneToMany(mappedBy = "organization")
 	private List<Event> events;
 
-	
+
 	
 	public Organization() {
 		// TODO Auto-generated constructor stub
